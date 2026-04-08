@@ -5,4 +5,5 @@ pillow
 scikit-learn==1.2.2
 opencv-python-headless
 tensorflow==2.13.0
+keras==2.13.1
 h5py
