@@ -86,7 +86,7 @@ def load_model():
     if not os.path.exists(ENCODER_PATH):
         return None, None, f"`{ENCODER_PATH}` not found next to app.py."
     try:
-        model = tf.keras.models.load_model(MODEL_PATH)
+      model = tf.keras.models.load_model(MODEL_PATH, compile=False)
     except Exception as e:
         return None, None, f"Model error: {e}"
     with open(ENCODER_PATH, "rb") as f:
