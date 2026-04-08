@@ -75,6 +75,8 @@ def preprocess(pil_image: Image.Image, target_h: int, target_w: int) -> np.ndarr
 
 
 # ── Load model (cached) ───────────────────────────────────────────────────────
+import os
+os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
 @st.cache_resource(show_spinner="Loading model…")
 def load_model():
     if not TF_AVAILABLE:
