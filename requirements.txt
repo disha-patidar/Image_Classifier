@@ -1,4 +1,13 @@
-streamlit
+# streamlit
 
-scikit-learn
+# scikit-learn
+# opencv-python-headless
+
+streamlit
+numpy==1.23.5
+pandas==1.5.3
+scikit-learn==1.3.2
+tensorflow==2.15.0
 opencv-python-headless
+xgboost
+librosa
