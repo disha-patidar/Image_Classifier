@@ -78,20 +78,29 @@ def preprocess(pil_image: Image.Image, target_h: int, target_w: int) -> np.ndarr
 import os
 os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
 @st.cache_resource(show_spinner="Loading model…")
+@st.cache_resource(show_spinner="Loading model…")
 def load_model():
     if not TF_AVAILABLE:
         return None, None, "TensorFlow not installed."
+
     if not os.path.exists(MODEL_PATH):
-        return None, None, f"`{MODEL_PATH}` not found next to app.py."
+        return None, None, f"{MODEL_PATH} not found next to app.py."
+
     if not os.path.exists(ENCODER_PATH):
-        return None, None, f"`{ENCODER_PATH}` not found next to app.py."
+        return None, None, f"{ENCODER_PATH} not found next to app.py."
+
     try:
-      model = tf.keras.models.load_model(MODEL_PATH, compile=False)
+        from keras.models import load_model
+        model = load_model(MODEL_PATH, compile=False)
     except Exception as e:
         return None, None, f"Model error: {e}"
+
+    # ✅ inside function
     with open(ENCODER_PATH, "rb") as f:
         le = pickle.load(f)
+
     return model, le, None
+
 
 
 # ─────────────────────────────────────────────────────────────────────────────

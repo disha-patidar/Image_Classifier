@@ -11,3 +11,4 @@ tensorflow==2.15.0
 opencv-python-headless
 xgboost
 librosa
+keras==2.15.0
